@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FractionalPartPipe } from './fractional-part.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CustomControlComponent } from './custom-control/custom-control.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FractionalPartPipe
+    FractionalPartPipe,
+    CustomControlComponent
   ],
   imports: [
     BrowserModule,

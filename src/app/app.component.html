@@ -1,25 +1,21 @@
-<p>{{ 200000 | fractionalPart }}</p>
-<div *ngFor="let item of collectionsOfForms.controls">
-  <ng-container [formGroup]="item">
-    <div>
-      <label>Name</label>
-      <input formControlName="name" [value]="item.get('name').value | fractionalPart"/>
-    </div>
-    <div>
-      <label>Price</label>
-      <input formControlName="price"/>
-    </div>
-  </ng-container>
-  <!--  <div>-->
-  <!--    <label>Name</label>-->
-  <!--    <input type="text" formControlName="name">-->
-  <!--  </div>-->
-  <!--  <div>-->
-  <!--    <label>Price</label>-->
-  <!--    <input type="text" formControlName="price">-->
-  <!--  </div>-->
+<form>
+  <div *ngFor="let item of collectionsOfForms.controls">
+    <ng-container [formGroup]="item">
+      <div>
+        <label>Name</label>
+        <input formControlName="name" />
+      </div>
+      <div>
+        <label>Price</label>
+        <input formControlName="price" [value]="item.get('price').value | fractionalPart"/>
+      </div>
+    </ng-container>
+  </div>
+  <button (click)="addForm()">ADD</button>
+</form>
+<div>
+  <app-custom-control [(ngModel)]="month" ></app-custom-control>
 </div>
-<button (click)="addForm()">ADD</button>
 
 
 
