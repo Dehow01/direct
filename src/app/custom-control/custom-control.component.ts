@@ -20,7 +20,7 @@ export class CustomControlComponent implements ControlValueAccessor {
   get value() {
     return this._value;
   }
-  set value(val) {
+  set value(val: number) {
     this._value = val;
     this.years = Math.floor(val / 12);
     this.month = val - 12 * this.years;

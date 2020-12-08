@@ -6,29 +6,26 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FractionalPartPipe implements PipeTransform {
 
   transform(value: number | string, ...args: any[]): any {
-    let remnant = '';
-    // value = +(value.toString().replace(/\s+/g, ''));
-    // if (this.isFloat(value)) {
-    //   remnant = (value % 1).toFixed(2).slice(1);
-    //   value = value.toFixed(0);
-    //   console.log(value, remnant);
-    // }
-    if (!Number.isInteger(+value)) { return null; }
-    return (value
+    let remnant: number;
+    let num = +(value.toString().replace(/\s+/g, ''));
+
+    if (this.isFloat(num)) {
+      remnant = +(num % 1).toFixed(2);
+      num = +num.toFixed(0);
+    }
+
+    if (!Number.isInteger(num)) { return value; }
+
+    const outputRemnant = (remnant) ? remnant.toString().slice(1, ) : '';
+
+    return (num
       .toString()
       .replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
-      + remnant
+      + outputRemnant
     );
   }
-  // isFraction(num: number): boolean {
-  //   return (num ^ 0) !== num;
-  // }
-  isFloat(val) {
+
+  isFloat(val: number): boolean {
     return ((val === Number(val)) && ((val % 1) !== 0));
-  }
-  parseNumber(val) {
-    const value = +(val.toString().replace(/\s+/g, ''));
-    if (!this.isFloat(value)) { return value; }
-    const remnant = (value % 1).toFixed(2).slice(1);
   }
 }

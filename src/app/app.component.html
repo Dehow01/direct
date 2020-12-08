@@ -1,18 +1,16 @@
-<form>
-  <div *ngFor="let item of collectionsOfForms.controls">
+ <div *ngFor="let item of collectionsOfForms.controls">
     <ng-container [formGroup]="item">
       <div>
         <label>Name</label>
-        <input formControlName="name" />
+        <input formControlName="name" type="text" />
       </div>
       <div>
         <label>Price</label>
-        <input formControlName="price" [value]="item.get('price').value | fractionalPart"/>
+        <input formControlName="price" [value]="item.get('price').value | fractionalPart" type="text"/>
       </div>
     </ng-container>
   </div>
   <button (click)="addForm()">ADD</button>
-</form>
 <div>
   <app-custom-control [(ngModel)]="month" ></app-custom-control>
 </div>
